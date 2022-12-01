@@ -55,16 +55,16 @@ public class Board {
   }
 
   private void setDefaultCoords() {
-    //Roka
+    //kutya
     coords[0][5] = 1;
 
-    //Kutya_1
+    //Roka_1
     coords[1][0] = 2;
 
-    //Kutya_2
+    //Roka_2
     coords[3][0] = 3;
 
-    //Kutya_3
+    //Roka_3
     coords[5][0] = 4;
   }
 
