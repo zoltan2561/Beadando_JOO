@@ -35,6 +35,9 @@ public class GameServiceImpl implements GameService {
     start(player, board, dog, fox1, fox2, fox3);
   }
 
+
+
+
   private String getPlayerName() {
     System.out.println("Add meg a jatekos nevet: ");
     Scanner input = new Scanner(System.in);
@@ -311,6 +314,7 @@ public class GameServiceImpl implements GameService {
       if (endChecker2(dog)) {
         board.setGame(false);
         winner = player.getName() + ", pontok: " + player.getScore();
+
       }
     } while (board.getGame());
 
