@@ -12,6 +12,15 @@ public class Fox {
     this.name = name;
   }
 
+    public Fox() {
+
+    }
+
+  public Fox(int i, int i1) {
+
+  }
+
+
   public int getCoordX() {
     return coordX;
   }
@@ -28,11 +37,10 @@ public class Fox {
     this.coordY = coordY;
   }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+
 
   public String getName() {
     return name;
   }
+
 }

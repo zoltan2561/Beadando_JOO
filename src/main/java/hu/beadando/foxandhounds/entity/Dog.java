@@ -12,7 +12,15 @@ public class Dog {
     this.name = name;
   }
 
-  public int getCoordX() {
+  public Dog() {
+
+  }
+
+  public Dog(int i, int i1) {
+
+  }
+
+    public int getCoordX() {
     return coordX;
   }
 
@@ -34,5 +42,19 @@ public class Dog {
 
   public String getName() {
     return name;
+  }
+
+  public Object getX() {
+    return null;
+  }
+
+  public Object getY() {
+    return null;
+  }
+
+    public void setX(int i) {
+    }
+
+  public void setY(int i) {
   }
 }

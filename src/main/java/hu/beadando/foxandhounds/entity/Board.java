@@ -93,4 +93,9 @@ public class Board {
   public void setGame(boolean game) {
     this.game = game;
   }
+
+
+    public String getWinner() {
+      return null;
+    }
 }

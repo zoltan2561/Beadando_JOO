@@ -5,12 +5,17 @@ public class Player {
   private String name;
   private int score;
 
-  public Player(String name) {
+  public Player(String name, int i) {
     this.name = name;
     score = 0;
   }
 
-  public String getName() {
+    public Player() {
+
+    }
+
+
+    public String getName() {
     return name;
   }
 

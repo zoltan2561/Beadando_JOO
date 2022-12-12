@@ -1,39 +1,26 @@
 package hu.beadando.foxandhounds;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import hu.beadando.foxandhounds.entity.Fox;
 import org.junit.jupiter.api.Test;
 
-class FoxTest {
+import static org.junit.jupiter.api.Assertions.*;
 
+ class FoxTests {
     @Test
-    void testConstructor() {
-        Fox fox = new Fox(1, 2, "Foxy");
+     public void testConstructor() {
+        Fox fox = new Fox(1, 2, "Fido");
         assertEquals(1, fox.getCoordX());
         assertEquals(2, fox.getCoordY());
-        assertEquals("Foxy", fox.getName());
     }
 
     @Test
-    void testSetCoordX() {
-        Fox fox = new Fox(1, 2, "Foxy");
+  public void testSettersAndGetters() {
+        Fox fox = new Fox();
+
         fox.setCoordX(3);
-        assertEquals(3, fox.getCoordX());
-    }
-
-    @Test
-    void testSetCoordY() {
-        Fox fox = new Fox(1, 2, "Foxy");
         fox.setCoordY(4);
+
+        assertEquals(3, fox.getCoordX());
         assertEquals(4, fox.getCoordY());
     }
-
-    @Test
-    void testSetName() {
-        Fox fox = new Fox(1, 2, "Foxy");
-        fox.setName("Foxinator");
-        assertEquals("Foxinator", fox.getName());
-    }
-
 }

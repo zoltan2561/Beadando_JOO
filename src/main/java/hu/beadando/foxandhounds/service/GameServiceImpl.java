@@ -16,10 +16,11 @@ public class GameServiceImpl implements GameService {
   private static final String ADD_UJRA = "Add ujra!";
   private static final String MEZO_FOGLALT = "A mezo mar foglalt '";
   private static final String ALTAL = "' altal. ";
+  public Scanner input;
 
   @Override
   public void play() {
-    Player player = new Player(getPlayerName());
+    Player player = new Player(getPlayerName(), 5);
     Dog dog = new Dog(0, 5, "Kutya");
     Fox fox1 = new Fox(1, 0, "Roka_1");
     Fox fox2 = new Fox(3, 0, "Roka_2");
@@ -37,14 +38,13 @@ public class GameServiceImpl implements GameService {
 
 
 
-
-  private String getPlayerName() {
+  public String getPlayerName() {
     System.out.println("Add meg a jatekos nevet: ");
     Scanner input = new Scanner(System.in);
     return input.nextLine();
   }
 
-  private void defaultPrinter(Dog dog, Fox fox1, Fox fox2, Fox fox3) {
+  public void defaultPrinter(Dog dog, Fox fox1, Fox fox2, Fox fox3) {
     System.out.println("START GAME!" + "\n");
     System.out.println("Jelolesek: ");
     System.out.println(
@@ -52,12 +52,12 @@ public class GameServiceImpl implements GameService {
             + fox3.getName() + "' = 4;" + "\n");
   }
 
-  private void defaultPrinter2(Dog dog) {
+  public void defaultPrinter2(Dog dog) {
     System.out.println("A koordinatakat 'betu+szam' kombinacioban varjuk!");
     System.out.println("'" + dog.getName() + "' kezd!\n");
   }
 
-  private int coordDogYReader() {
+  public int coordDogYReader() {
     Scanner input = new Scanner(System.in);
     boolean check;
     int coordY;
@@ -74,7 +74,7 @@ public class GameServiceImpl implements GameService {
     return --coordY;
   }
 
-  private int coordDogXReader() {
+  public int coordDogXReader() {
     Scanner input = new Scanner(System.in);
     boolean check;
     int coordX;
@@ -92,7 +92,7 @@ public class GameServiceImpl implements GameService {
     return coordX;
   }
 
-  private int coordFoxXGenerator(Fox fox) {
+  public int coordFoxXGenerator(Fox fox) {
     int min = fox.getCoordX() - 1;
     int max = fox.getCoordX() + 1;
     int x;
@@ -112,7 +112,7 @@ public class GameServiceImpl implements GameService {
     return x;
   }
 
-  private int coordFoxYGenerator(Fox fox) {
+  public int coordFoxYGenerator(Fox fox) {
     int min = fox.getCoordY() - 1;
     int max = fox.getCoordY() + 1;
     int y;
@@ -132,7 +132,7 @@ public class GameServiceImpl implements GameService {
     return y;
   }
 
-  private boolean coordDogPositionChecker(Dog dog, int x, int y, Fox fox1, Fox fox2, Fox fox3) {
+  public boolean coordDogPositionChecker(Dog dog, int x, int y, Fox fox1, Fox fox2, Fox fox3) {
     boolean exiter = false;
 
     if(coordDiagonalPositionCheckerToDog(dog, x, y)) {
@@ -229,9 +229,6 @@ public class GameServiceImpl implements GameService {
 
   /*
   private static boolean endlessChecker() {
-    //TODO: kell egy bővítés, hogy a róka ami random ki lett sorsolva nem tud lépni, olyankor kell másik sorsolás;
-    //TODO: megoldás, minden pozíció generálós résznél meg kell nézni, hogy van egyáltalán még szabad pozíció;
-  }
   */
 
   private void start(Player player, Board board, Dog dog, Fox fox1, Fox fox2, Fox fox3) {
@@ -321,5 +318,6 @@ public class GameServiceImpl implements GameService {
 
     System.out.println("VEGE A JATEKNAK! A GYOZTES: " + winner);
   }
+
 
 }

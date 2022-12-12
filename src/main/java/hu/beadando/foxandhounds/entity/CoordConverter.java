@@ -1,7 +1,7 @@
 package hu.beadando.foxandhounds.entity;
 
 public class CoordConverter {
-  private CoordConverter(){
+  public CoordConverter(){
   }
 
   public static int convertXCoord(String coordXText) {
@@ -71,7 +71,7 @@ public class CoordConverter {
       return true;
     }
 
-    //TODO: kiegészíteni a csekkeket;
+
     return false;
   }
 
@@ -88,8 +88,9 @@ public class CoordConverter {
       return true;
     }
 
-    //TODO: kiegészíteni a csekkeket;
+
     return false;
   }
+
 
 }
