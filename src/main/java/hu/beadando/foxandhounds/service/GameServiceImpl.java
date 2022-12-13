@@ -269,7 +269,7 @@ public class GameServiceImpl implements GameService {
           // Check if the counter exceeds the threshold
           if (counter > threshold) {
             // Handle the situation here, for example by exiting the loop
-            System.out.println("hiba");
+            System.out.println("!hiba!");
             break;
           }
 
@@ -293,7 +293,7 @@ public class GameServiceImpl implements GameService {
           //
           if (counter > threshold) {
             // Handle the situation here, for example by exiting the loop
-            System.out.println("hiba");
+            System.out.println("!hiba!");
             break;
           }
 
@@ -315,7 +315,7 @@ public class GameServiceImpl implements GameService {
           // endlessChecker;
           if (counter > threshold) {
             // Handle the situation here, for example by exiting the loop
-            System.out.println("hiba");
+            System.out.println("!hiba!");
             break;
           }
           counter++;
@@ -344,7 +344,7 @@ public class GameServiceImpl implements GameService {
 
     } while (board.getGame());
 
-
+    System.out.println("VEGE A JATEKNAK! A GYOZTES: " + winner );
 
    /////////////////adatbázisba írás
     try {
@@ -388,6 +388,7 @@ public class GameServiceImpl implements GameService {
 
       // Print the data to the terminal
       System.out.println("☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆HIGHSCORES☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
+      System.out.println("   ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
       while (rs.next()) {
         String name = rs.getString("name");
         int wins = rs.getInt("wins");
@@ -396,13 +397,16 @@ public class GameServiceImpl implements GameService {
 
       }
       System.out.println("☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆HIGHSCORES☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
+      System.out.println("     ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
+      System.out.println("      ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
+      System.out.println("         ☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
       // Close the connection to the database
       conn.close();
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
 
-    System.out.println("VEGE A JATEKNAK! A GYOZTES: " + winner );
+
 
   }
 
