@@ -6,7 +6,9 @@ import hu.beadando.foxandhounds.entity.Dog;
 import hu.beadando.foxandhounds.entity.Fox;
 import hu.beadando.foxandhounds.entity.Player;
 import org.springframework.stereotype.Service;
+import org.h2.Driver;
 
+import java.sql.*;
 import java.util.Scanner;
 
 @Service
@@ -311,12 +313,45 @@ public class GameServiceImpl implements GameService {
       if (endChecker2(dog)) {
         board.setGame(false);
         winner = player.getName() + ", pontok: " + player.getScore();
+        player.setNumWins(player.getNumWins() + 1);
 
       }
+
     } while (board.getGame());
+    try {
+      Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/./user2", "sa", "1234");
+
+      // Check if the player already exists
+      String sqlCheck = "SELECT * FROM players WHERE name = ?";
+      PreparedStatement stmtCheck = conn.prepareStatement(sqlCheck);
+      stmtCheck.setString(1, player.getName());
+      ResultSet rs = stmtCheck.executeQuery();
+      if (rs.next()) {
+        // Player already exists, so update their wins
+        int wins = rs.getInt("wins") + player.getNumWins();
+        String sqlUpdate = "UPDATE players SET wins = ? WHERE name = ?";
+        PreparedStatement stmtUpdate = conn.prepareStatement(sqlUpdate);
+        stmtUpdate.setInt(1, wins);
+        stmtUpdate.setString(2, player.getName());
+        stmtUpdate.executeUpdate();
+      } else {
+        // Player does not exist, so insert a new record
+        String sqlInsert = "INSERT INTO players (name, wins) VALUES (?, ?)";
+        PreparedStatement stmtInsert = conn.prepareStatement(sqlInsert);
+        stmtInsert.setString(1, player.getName());
+        stmtInsert.setInt(2, player.getNumWins());
+        stmtInsert.executeUpdate();
+      }
+
+      // Close the connection to the database
+      conn.close();
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
 
 
-    System.out.println("VEGE A JATEKNAK! A GYOZTES: " + winner);
+    System.out.println("VEGE A JATEKNAK! A GYOZTES: " + winner );
+
   }
 
 
