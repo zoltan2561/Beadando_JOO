@@ -382,7 +382,7 @@ public class GameServiceImpl implements GameService {
       Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/./user2", "sa", "1234");
 
       // Retrieve the data from the table
-      String sql = "SELECT * FROM players";
+      String sql = "SELECT * FROM players ORDER BY wins DESC";
       Statement stmt = conn.createStatement();
       ResultSet rs = stmt.executeQuery(sql);
 
