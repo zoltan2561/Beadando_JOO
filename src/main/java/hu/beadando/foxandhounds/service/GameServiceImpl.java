@@ -258,12 +258,23 @@ public class GameServiceImpl implements GameService {
       player.setScore(player.getScore() + 1);
 
       int randomFoxNumber = randomFoxGenerator();
+      int counter=0;
+      int threshold=10;
 
       if (randomFoxNumber == 1) {
         do {
           x1 = coordFoxXGenerator(fox1);
           y1 = coordFoxYGenerator(fox1);
-          //TODO: endlessChecker;
+
+          // Check if the counter exceeds the threshold
+          if (counter > threshold) {
+            // Handle the situation here, for example by exiting the loop
+            System.out.println("hiba");
+            break;
+          }
+
+          counter++;
+
         } while (coordFox1PositionChecker(dog, x1, y1, fox1, fox2, fox3));
 
         board.setCoordsValue(fox1.getCoordX(), fox1.getCoordY(), 0);
@@ -278,7 +289,15 @@ public class GameServiceImpl implements GameService {
         do {
           x2 = coordFoxXGenerator(fox2);
           y2 = coordFoxYGenerator(fox2);
-          //TODO: endlessChecker;
+          // endlessChecker;
+          //
+          if (counter > threshold) {
+            // Handle the situation here, for example by exiting the loop
+            System.out.println("hiba");
+            break;
+          }
+
+          counter++;
         } while (coordFox2PositionChecker(dog, x2, y2, fox1, fox2, fox3));
 
         board.setCoordsValue(fox2.getCoordX(), fox2.getCoordY(), 0);
@@ -293,7 +312,13 @@ public class GameServiceImpl implements GameService {
         do {
           x3 = coordFoxXGenerator(fox3);
           y3 = coordFoxYGenerator(fox3);
-          //TODO: endlessChecker;
+          // endlessChecker;
+          if (counter > threshold) {
+            // Handle the situation here, for example by exiting the loop
+            System.out.println("hiba");
+            break;
+          }
+          counter++;
         } while (coordFox3PositionChecker(dog, x3, y3, fox1, fox2, fox3));
 
         board.setCoordsValue(fox3.getCoordX(), fox3.getCoordY(), 0);
@@ -318,6 +343,10 @@ public class GameServiceImpl implements GameService {
       }
 
     } while (board.getGame());
+
+
+
+   /////////////////adatbázisba írás
     try {
       Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/./user2", "sa", "1234");
 
@@ -348,7 +377,29 @@ public class GameServiceImpl implements GameService {
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
+    /////////////////highscores
+    try {
+      Connection conn = DriverManager.getConnection("jdbc:h2:tcp://localhost/./user2", "sa", "1234");
 
+      // Retrieve the data from the table
+      String sql = "SELECT * FROM players";
+      Statement stmt = conn.createStatement();
+      ResultSet rs = stmt.executeQuery(sql);
+
+      // Print the data to the terminal
+      System.out.println("HIGHSCORES:☆☆☆☆☆☆☆☆☆☆☆☆☆");
+      while (rs.next()) {
+        String name = rs.getString("name");
+        int wins = rs.getInt("wins");
+
+        System.out.println(name + " has won " + wins + " games");
+      }
+
+      // Close the connection to the database
+      conn.close();
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
 
     System.out.println("VEGE A JATEKNAK! A GYOZTES: " + winner );
 
