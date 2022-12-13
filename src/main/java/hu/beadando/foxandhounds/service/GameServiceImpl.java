@@ -387,14 +387,15 @@ public class GameServiceImpl implements GameService {
       ResultSet rs = stmt.executeQuery(sql);
 
       // Print the data to the terminal
-      System.out.println("HIGHSCORES:☆☆☆☆☆☆☆☆☆☆☆☆☆");
+      System.out.println("☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆HIGHSCORES☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
       while (rs.next()) {
         String name = rs.getString("name");
         int wins = rs.getInt("wins");
 
         System.out.println(name + " has won " + wins + " games");
-      }
 
+      }
+      System.out.println("☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆HIGHSCORES☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
       // Close the connection to the database
       conn.close();
     } catch (SQLException e) {
