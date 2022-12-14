@@ -393,7 +393,7 @@ public class GameServiceImpl implements GameService {
         String name = rs.getString("name");
         int wins = rs.getInt("wins");
 
-        System.out.println(name + " has won " + wins + " games");
+        System.out.println("                             "+name + " has won " + wins + " games");
 
       }
       System.out.println("☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆HIGHSCORES☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆");
