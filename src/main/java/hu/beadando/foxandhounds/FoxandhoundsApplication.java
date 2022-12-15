@@ -20,5 +20,5 @@ public class FoxandhoundsApplication {
     GameService gameService = applicationContext.getBean(GameService.class);
     gameService.play();
 	}
-	//Connection conn = DriverManager.getConnection("jdbc:h2:~/mydb", "username", "password");
+
 }
