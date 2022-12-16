@@ -36,8 +36,7 @@ public class Board {
 
     for (int i=0; i<6; i++) {
       for (int j=0; j<6; j++) {
-        //itt azért van megcserélve, hogy a kirajzolás igazodjon az elnevezésekhez;
-        //a gép nem úgy rajzolja a koordináta rendszert mint ahogy a valóságban van;
+
         textColorSettedPrinter(coords[j][i]);
       }
       System.out.println("  |" + COLOR_MARGIN + (i+1) + COLOR_RESET);
@@ -54,7 +53,7 @@ public class Board {
     coords[x][y] = value;
   }
 
-  private void setDefaultCoords() {
+  public void setDefaultCoords() {
     //kutya
     coords[0][5] = 1;
 
@@ -68,7 +67,7 @@ public class Board {
     coords[5][0] = 4;
   }
 
-  private void textColorSettedPrinter(int value) {
+  public void textColorSettedPrinter(int value) {
     System.out.print(COLOR_ZERO);
 
     if(value == 1) {

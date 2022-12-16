@@ -233,7 +233,7 @@ public class GameServiceImpl implements GameService {
   private static boolean endlessChecker() {
   */
 
-  private void start(Player player, Board board, Dog dog, Fox fox1, Fox fox2, Fox fox3) {
+  public void start(Player player, Board board, Dog dog, Fox fox1, Fox fox2, Fox fox3) {
     String winner = "";
 
     do {
